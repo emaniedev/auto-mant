@@ -14,9 +14,10 @@ res.json({
 });
 };
 
+
 const middlewares = {
-notFound,
-errorHandler
+  notFound,
+  errorHandler
 }
 
 module.exports = middlewares;
