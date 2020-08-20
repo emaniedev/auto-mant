@@ -1,4 +1,3 @@
-const { json } = require('express');
 const express = require('express');
 
 const Auto = require('../models/Auto.js');
@@ -8,6 +7,7 @@ const AutoRouter = express.Router();
 
 AutoRouter.get('/', async (req,res, next) => {
     try {
+        console.log("Get -> Autos")
         const autos = await Auto.find();
         res.json(autos);
     } catch (error) {

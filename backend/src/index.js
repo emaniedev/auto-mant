@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 
-const AutoRouter = require('./app/api/auto');
+
 const middlewares = require('./middlewares');
 const mongoose  = require('mongoose');
 
@@ -43,8 +43,13 @@ app.use(morgan('common'));
 app.use(helmet());
 app.use(express.json());
 
+const AutoRouter = require('./app/api/auto');
+const DocumentRouter = require('./app/api/document')
+const Document_typeRouter = require('./app/api/document_type')
 //Routing
 app.use('/api/autos', AutoRouter);
+app.use('/api/documents', DocumentRouter);
+app.use('/api/documentstypes', Document_typeRouter);
 
 
 
@@ -60,9 +65,5 @@ app.listen(port, () => {
     console.log("Escuchando en: http://localhost:" + port);   
 })
 
-
-const hotReload = () => {
-
-}
 
 

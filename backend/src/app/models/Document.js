@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const validation = require('./validation');
+const Document_type = require('./Document_type');
 
 const documentSchema = new mongoose.Schema({
     type: {
-        type: String,
+        type: [typeof Document_type],
         required: true
     },
     name: validation.requiredString,
@@ -20,4 +21,4 @@ const documentSchema = new mongoose.Schema({
 
 const Document = mongoose.model('Document', documentSchema);
 
-module.exports = Auto;
+module.exports = Document;
