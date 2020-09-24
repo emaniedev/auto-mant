@@ -1,21 +1,5 @@
 #!/bin/bash
 
-case "$1" in
-"-c" | "--client")
-    clientDeploy
-    ;;
-"-b" | "--backend")
-    backendDeploy
-    ;;
-*)
-    showMan
-    ;;
-esac
-
-
-
-
-
 function clientDeploy{
 
     echo "Initializing deploy"
@@ -89,4 +73,23 @@ function showMan{
     echo 'Usa "-c" o "--client" para desplegar el cliente.'
     echo 'Usa "-b" o "--backend" para deplegar la api.'
 }
+
+
+
+case "$1" in
+"-c" | "--client")
+    clientDeploy
+    ;;
+"-b" | "--backend")
+    backendDeploy
+    ;;
+*)
+    showMan
+    ;;
+esac
+
+
+
+
+
 
