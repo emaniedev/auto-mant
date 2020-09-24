@@ -16,7 +16,7 @@ esac
 
 
 
-function clientDeploy(){
+function clientDeploy{
 
     echo "Initializing deploy"
     #Prepare de Backup of the current build
@@ -53,7 +53,7 @@ function clientDeploy(){
     echo 'Deploy finished!!!'
 }
 
-function backendDeploy(){
+function backendDeploy{
 
     echo "Initializing Backend deploy"
     #Prepare de Backup of the current build
@@ -84,7 +84,7 @@ function backendDeploy(){
     echo 'Deploy Backend finished!!!'
 }
 
-function showMan(){
+function showMan{
     echo "Es necesario un parámetro correcto:"
     echo 'Usa "-c" o "--client" para desplegar el cliente.'
     echo 'Usa "-b" o "--backend" para deplegar la api.'
