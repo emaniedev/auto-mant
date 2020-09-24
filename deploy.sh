@@ -2,13 +2,13 @@
 
 case "$1" in
 "-c" | "--client")
-    clientDeploy()
+    clientDeploy
     ;;
 "-b" | "--backend")
-    backendDeploy()
+    backendDeploy
     ;;
 *)
-    showMan()
+    showMan
     ;;
 esac
 
