@@ -14,7 +14,6 @@ git pull
 #Install and build
 cd client
 echo 'Installing dependencies...'
-echo 'El directorio es $pwd'
 npm install
 echo 'Building...'
 npm run build
@@ -25,7 +24,7 @@ echo 'Deploying...'
 mv build /var/www/html
 
 echo 'Cleaning...'
-mv /var/www/html/build_bk2 null
+rm -r /var/www/html/build_bk2
 
 echo 'Deploy finished!!!'
 
