@@ -14,7 +14,7 @@ git pull
 #Install and build
 cd client
 echo 'Installing dependencies...'
-npm i 
+npm i .
 echo 'Building...'
 npm run build
 
@@ -22,6 +22,9 @@ npm run build
 
 echo 'Deploying...'
 mv build /var/www/html
+
+echo 'Cleaning...'
+mv /var/www/html/build_bk2 null
 
 echo 'Deploy finished!!!'
 
