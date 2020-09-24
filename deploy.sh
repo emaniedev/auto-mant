@@ -14,7 +14,8 @@ git pull
 #Install and build
 cd client
 echo 'Installing dependencies...'
-npm i .
+echo 'El directorio es $pwd'
+npm install
 echo 'Building...'
 npm run build
 
