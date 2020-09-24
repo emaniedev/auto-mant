@@ -3,8 +3,8 @@
 #Prepare de Backup of the current build
 
 echo 'Preparing backups...'
-mv /var/www/html/build_bk /var/www/html/build_bk2
-mv /var/www/html/build /var/www/html/build_bk
+sudo mv /var/www/html/build_bk /var/www/html/build_bk2
+sudo mv /var/www/html/build /var/www/html/build_bk
 
 #Get the latests code
 
@@ -21,10 +21,10 @@ npm run build
 #Move de build directory to /var/www/html
 
 echo 'Deploying...'
-mv build /var/www/html
+sudo mv build /var/www/html
 
 echo 'Cleaning...'
-rm -r /var/www/html/build_bk2
+sudo rm -r /var/www/html/build_bk2
 
 echo 'Deploy finished!!!'
 
