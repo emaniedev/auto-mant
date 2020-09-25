@@ -11,6 +11,8 @@ function clientDeploy {
 
     #Get the latests code
 
+    echo "Cleaning working directory"
+    git clean -f -d
     echo 'Pulling last commits...'
     git pull
 
@@ -29,10 +31,11 @@ function clientDeploy {
     #Limpiando ficheros de backup
     echo 'Cleaning...'
     sudo rm -r /var/www/html/build_bk2
+    sudo rm -r /var/www/html/build_bk
 
     #Reiniciando el servicio
     echo "Restarting Services.."
-    sudo service nginx restar
+    sudo service nginx restart
 
     echo 'Deploy finished!!!'
 }
@@ -48,8 +51,10 @@ function backendDeploy {
 
     #Get the latests code
 
+    echo "Cleaning working directory"
+    git clean -f -d
     echo 'Pulling last commits...'
-    git pull
+    git pull origin/master
 
     #Install and build
     cd backend
@@ -58,12 +63,13 @@ function backendDeploy {
     cd ..
     echo "Copying necesary files"
     sudo cp -r backend/ /var/www/html/back
-    echo 'starting...'
-    node /var/www/html/back/src/index.js
+    echo 'Restarting service...'
+    sudo systemctl restart automant-api
 
     #Limpiando ficheros de backup
     echo 'Cleaning...'
     sudo rm -r /var/www/html/back_bk2
+    sudo rm -r /var/www/html/back_bk
 
     echo 'Deploy Backend finished!!!'
 }
