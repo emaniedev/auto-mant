@@ -60,6 +60,9 @@ function backendDeploy {
     cd backend
     echo 'Installing dependencies...'
     npm install
+    
+    #Give exec permission to the file
+    sudo chmod +x ./src/index.js
     cd ..
     echo "Copying necesary files"
     sudo cp -r backend/ /var/www/html/back
