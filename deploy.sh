@@ -10,7 +10,7 @@ function clientDeploy {
     sudo mv /var/www/html/build /var/www/html/build_bk
 
     #Get the latests code
-
+    cd ~/auto-mant
     echo "Cleaning working directory"
     git clean -f -d
     echo 'Pulling last commits...'
@@ -50,11 +50,11 @@ function backendDeploy {
     sudo mv /var/www/html/back /var/www/html/back_bk
 
     #Get the latests code
-
+    cd ~/auto-mant
     echo "Cleaning working directory"
     git clean -f -d
     echo 'Pulling last commits...'
-    git pull origin/master
+    git pull
 
     #Install and build
     cd backend
