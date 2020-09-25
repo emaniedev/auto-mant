@@ -4,7 +4,7 @@ Description=Auto-Mant Api Service.
 [Service]
 ExecStart=/var/www/html/back/src/index.js
 Restart=always
-User=nobody
+User=pi
 # Note Debian/Ubuntu uses 'nogroup', RHEL/Fedora uses 'nobody'
 Group=nogroup
 Environment=PATH=/usr/bin:/usr/local/bin:/home/pi/.nvm/versions/node/v14.8.0/bin
