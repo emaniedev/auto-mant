@@ -1,0 +1,15 @@
+[Unit]
+Description=Auto-Mant Api Service.
+
+[Service]
+ExecStart=/var/www/html/back/src/index.js
+Restart=always
+User=nobody
+# Note Debian/Ubuntu uses 'nogroup', RHEL/Fedora uses 'nobody'
+Group=nogroup
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/var/www/html/back
+
+[Install]
+WantedBy=multi-user.target
