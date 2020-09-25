@@ -6,7 +6,6 @@ function clientDeploy {
     #Prepare de Backup of the current build
 
     echo 'Preparing backups...'
-    sudo mv /var/www/html/build_bk /var/www/html/build_bk2
     sudo mv /var/www/html/build /var/www/html/build_bk
 
     #Get the latests code
@@ -30,7 +29,6 @@ function clientDeploy {
 
     #Limpiando ficheros de backup
     echo 'Cleaning...'
-    sudo rm -r /var/www/html/build_bk2
     sudo rm -r /var/www/html/build_bk
 
     #Reiniciando el servicio
@@ -46,7 +44,6 @@ function backendDeploy {
     #Prepare de Backup of the current build
 
     echo 'Preparing backups...'
-    sudo mv /var/www/html/back_bk /var/www/html/back_bk2
     sudo mv /var/www/html/back /var/www/html/back_bk
 
     #Get the latests code
@@ -71,7 +68,6 @@ function backendDeploy {
 
     #Limpiando ficheros de backup
     echo 'Cleaning...'
-    sudo rm -r /var/www/html/back_bk2
     sudo rm -r /var/www/html/back_bk
 
     echo 'Deploy Backend finished!!!'
