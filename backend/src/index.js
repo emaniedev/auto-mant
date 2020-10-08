@@ -40,6 +40,9 @@ mongoose.connect(process.env.DATABASE_URL,{
     useNewUrlParser: true,
     useUnifiedTopology:true
 })
+    .then(v => console.log('Conectado!!!!'))
+    .catch((error) => console.error(error))
+    
 //Midlewares
 app.use(morgan('common'));
 app.use(helmet());

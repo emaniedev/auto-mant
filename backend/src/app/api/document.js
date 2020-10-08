@@ -16,6 +16,19 @@ DocumentRouter.get('/', async (req, res, next) => {
     }
 })
 
+//Recovers One
+DocumentRouter.get('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const docu = await Document.findById(id);
+        res.json(docu);
+    } catch (error) {
+        next(error);
+        console.log("cosa");
+    }
+})
+
+//Create One
 DocumentRouter.post('/', async (req, res, next) => {
     try {
         const docu = new Document(req.body);
@@ -26,6 +39,32 @@ DocumentRouter.post('/', async (req, res, next) => {
         if (error.name === 'ValidationError') {
             res.status(422);
         }
+        next(error);
+    }
+})
+
+//Update One
+DocumentRouter.put('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const docu = await new Document({_id:id}).updateOne(req.body);
+        res.json(docu);
+
+    } catch (error) {
+        if (error.name === 'ValidationError') {
+            res.status(422);
+        }
+        next(error);
+    }
+})
+
+//Delete One
+DocumentRouter.delete('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const auto = await new Document({ _id: id }).deleteOne();
+        res.json(auto);
+    } catch (error) {
         next(error);
     }
 })
