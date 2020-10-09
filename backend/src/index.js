@@ -47,6 +47,7 @@ mongoose.connect(process.env.DATABASE_URL,{
 app.use(morgan('common'));
 app.use(helmet());
 app.use(express.json());
+app.use(cors())
 
 const AutoRouter = require('./app/api/auto');
 const DocumentRouter = require('./app/api/document')

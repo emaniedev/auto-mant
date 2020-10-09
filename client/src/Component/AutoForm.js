@@ -1,15 +1,60 @@
-import React, { ReactDOM, useState } from 'react';
+import React, { ReactDOM, useState, useEffect } from 'react';
+import { Router, Route, Switch, Redirect } from 'react-router';
+import { useHistory, useParams  } from 'react-router-dom'
 import { useForm } from "react-hook-form";
-import { createAuto } from '../API/Api';
+import Autos from '../API/Autos';
 
+const FIELDS = [
+    'plate_number',
+    'brand',
+    'model',
+    'alias',
+    'description',
+    //'obtention_date',
+]
+const EDITLBL = 'Editar';
+const CREATELBL = 'Crear';
 
-
-function CreateForm() {
+function AutoForm() {
     const [formState, setFormState] = useState();
-    const { register, handleSubmit, watch, errors } = useForm();
+    const [textBtn, setTextBtn] = useState('');
+    const { register, handleSubmit, watch, errors, setValue } = useForm();
+    const history = useHistory();
+    const { id } = useParams();
+    
+    
+    useEffect(() => {
+        async function fetchAuto() {
+            try {
+                console.log(id);
+                if (id) {
+                    setTextBtn(EDITLBL);
+                    const response = await Autos.getOneAuto(id);
+                    FIELDS.forEach(field => setValue(field, response[field]));
+                    // It´s a Date and needs to be cooked.
+                    // Mongo Date Format = "2017-07-08T22:00:00.000Z"
+                    // Needed Date = "yyyy-MM-dd"
+                    if (response.obtention_date) {
+                        const cleanDateMs = response['obtention_date'].split('T');
+                        setValue('obtention_date', cleanDateMs[0]);
+                    }
 
+                } else {
+                    setTextBtn(CREATELBL);
+                }
+            } catch (error) { }
+        };
+        fetchAuto();
+    }, []);
 
-    const onSubmit = data => createAuto(data);
+    const onSubmit = (data) => {
+        if (id) {
+            Autos.updateOneAuto(id, data);   
+        } else {
+            Autos.createAuto(data);
+        }
+        history.push('/viewautos', { reload: true});
+    }
 
     return (
         <div id="createFormDiv">
@@ -43,7 +88,7 @@ function CreateForm() {
                     <input type="date" className="form-control" name="obtention_date" aria-describedby="obtention_dateHelp" ref={register}></input>
                 </div>
 
-                    <button type="submit" className="btn btn-warning">Crear</button>
+                <button type="submit" className="btn btn-warning">{textBtn}</button>
             </form>
         </div>
         
@@ -51,6 +96,6 @@ function CreateForm() {
 }
 
 
-export default CreateForm
+export default AutoForm
 
 

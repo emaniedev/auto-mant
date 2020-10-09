@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 import Header from './Component/Header';
-import CreateForm from './Component/CreateForm'
+import AutoForm from './Component/AutoForm'
 import ViewAutos from './Component/ViewAutos';
 import Home from './Component/Home';
 
@@ -20,9 +20,9 @@ function App() {
         <div className='container'>
           <Switch>
             <Route path="/" exact component={Home}></Route>
-            <Route path="/CreateForm" component={CreateForm}></Route>
-            <Route path="/ViewAutos" component={ViewAutos}></Route>
-          </Switch>
+            <Route path="/autoForm/:id?" component={ AutoForm }></Route>
+            <Route path="/ViewAutos" component={ ViewAutos }></Route>
+          </Switch> 
         </div>
       </Router>
     </div>
